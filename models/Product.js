@@ -35,6 +35,7 @@ Product.init(
         isNumeric: true
       }
     },
+    // category id from the category model (table)
     category_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -44,6 +45,7 @@ Product.init(
     }
   },
   {
+    // constraints and validators
     sequelize,
     timestamps: false,
     freezeTableName: true,
