@@ -18,6 +18,7 @@ Tag.init(
     }
   },
   {
+    // constraints and validators
     sequelize,
     timestamps: false,
     freezeTableName: true,
