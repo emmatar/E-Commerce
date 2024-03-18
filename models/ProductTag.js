@@ -13,6 +13,7 @@ ProductTag.init(
       primaryKey: true,
       autoIncrement: true
     },
+    // product id from the product model (table)
     product_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -20,6 +21,7 @@ ProductTag.init(
         key: 'id'
       }
     },
+// tag id from the product tag (table)
     tag_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -29,6 +31,7 @@ ProductTag.init(
     }
   },
   {
+    // constraints and validators
     sequelize,
     timestamps: false,
     freezeTableName: true,
