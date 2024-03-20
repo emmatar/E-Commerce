@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
       include: [{ model: Product, through: ProductTag, as: 'products'} ]
     });
     // return tags with associated products
-    res.status(200).json(tagData);
+    res.status(200).json({ status: "ok", message: tagData });
       // catch error
   } catch (err) {
     console.log(err);
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'No tag found with this id'})
       return;
     }
-    res.status(200).json(tagData);
+    res.status(200).json({ status: "ok", message: tagData });
   } catch (err) {
     res.status(500).json(err)
   }
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
   // create a new tag
   try {
     const tagData = await Tag.create(req.body);
-    res.status(200).json(tagData);
+    res.status(200).json({ status: "ok", message: tagData });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
       res.status(404).json({ message: 'No tag found with this id'})
       return;
     }
-    res.status(200).json(tagData);
+    res.status(200).json({ status: "ok", message: tagData });
   } catch (err) {
     res.status(500).json(err);
   }
