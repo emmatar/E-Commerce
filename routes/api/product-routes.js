@@ -11,10 +11,10 @@ router.get('/', async (req, res) => {
   // include associated Products
       include: [{ model: Tag, through: ProductTag, as: 'tags' }]
     });
-  // return Products with associated products
+  // return Products with associated tags
     res.status(200).json(productData);
-  } catch (err) {
   // catch error
+  } catch (err) {
     res.status(500).json(err);
   }
 });
@@ -126,6 +126,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({ message: 'No product found with this id'})
       return;
     }
+    res.status(204).end();
   } catch (err) {
     res.status(500).json(err);
   }
