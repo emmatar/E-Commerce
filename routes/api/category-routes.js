@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       include: [{ model: Product}]
     });
   // return categories with associated products
-    res.status(200).json(categoryData);
+    res.status(200).json({ status: "ok", message: categoryData });
   } catch (err) {
   // catch error
     res.status(500).json(err);
@@ -26,10 +26,10 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Product }]
     });
     if (!categoryData) {
-      res.status(404).json({ message: 'No category found with that id'});
+      res.status(404).json({ status: "bad", message: 'No category found with that id'});
       return;
     }
-    res.status(200).json(categoryData);
+    res.status(200).json({ status: "ok", message: categoryData });
   } catch (err) {
     res.status(500).json(err)
   }
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   // create a new category
   try {
     const categoryData = await Category.create(req.body);
-    res.status(200).json(categoryData);
+    res.status(200).json({ status: "ok", message: categoryData });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
       res.status(404).json({ message: 'No category found with this id'});
       return;
     };
-    res.status(200).json(categoryData);
+    res.status(200).json({ status: "ok", message: categoryData });
   } catch (err) {
     res.status(500).json(err)
   }
